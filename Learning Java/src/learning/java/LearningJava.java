@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package learning.java;
-
 /**
  *
  * @author jjmfo
  */
-public class LearningJava {
 
+import java.util.Scanner;
+public class LearningJava {
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("What is your name?:");
+
+        String name = myObj.nextLine();
+        System.out.println("Hello " + name + "!");
     }
-    
 }
