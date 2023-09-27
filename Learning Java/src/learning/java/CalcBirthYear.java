@@ -6,8 +6,17 @@ public class CalcBirthYear {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Enter your age: ");
-        int age = in.nextInt();
+        int age, birthMonth;
+        while (true) {
+            System.out.println("Enter your age:");
+            if (!in.hasNextInt()) { //If the next input from the Scanner object "in" is not an integer
+                System.out.println("Error: Enter a number");
+                in.next();  //Discard last input and try again
+            } else {
+                age = in.nextInt();
+                break;
+            }
+        }
 
         LocalDate today = LocalDate.now();
         int currentYear = today.getYear();
@@ -16,8 +25,16 @@ public class CalcBirthYear {
         int birthYear = currentYear - age;
 
         // If the user's birthday hasn't occurred yet this year, subtract one from the birth year
-        System.out.println("Enter the number of your birth month: ");
-        int birthMonth = in.nextInt();
+        while (true) {
+            System.out.println("Enter the number of your birth month:");
+            if (!in.hasNextInt()) { //If the next input from the Scanner object "in" is not an integer
+                System.out.println("Error: Enter a number");
+                in.next();  //Discard last input and try again
+            } else {
+                birthMonth = in.nextInt();
+                break;
+            }
+        }
         if (birthMonth > currentMonth) {
             birthYear--;
         }
