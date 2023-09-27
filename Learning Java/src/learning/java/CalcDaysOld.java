@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class CalcBirthYear {
+public class CalcDaysOld {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
