@@ -6,14 +6,36 @@ public class HeightWidthRectangle {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Enter width of rectangle:");
-        int width = in.nextInt();
+        int width, length;  //Declaring width and length variables
 
-        System.out.println("Enter length of rectangle:");
-        int length = in.nextInt();
 
-        int perimeter = width*2 + length*2;
-        int area = width * length;
+        //Validating INTEGER data type
+        while (true) {
+            System.out.println("Enter width of rectangle:");
+            if (!in.hasNextInt()) { //If the next input from the Scanner object "in" is not an integer
+                System.out.println("Error: Enter a whole number");
+                in.next();  //Discard last input and try again
+            } else {
+                width = in.nextInt();
+                break;
+            }
+        }
+
+        //Validating INTEGER data type
+        while (true){
+            System.out.println("Enter length of rectangle:");
+
+            if (!in.hasNextInt()){
+                System.out.println("Error: Enter a whole number");
+                in.next();
+            } else{
+                length = in.nextInt();
+                break;
+            }
+        }
+
+        int perimeter = width*2 + length*2; int area = width * length;
+
         System.out.println("The perimeter of the rectangle is " + perimeter);
         System.out.println("The area of the rectangle is " + area);
     }
