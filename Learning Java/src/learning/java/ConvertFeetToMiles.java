@@ -1,5 +1,6 @@
 package learning.java;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class ConvertFeetToMiles {
@@ -20,8 +21,9 @@ public class ConvertFeetToMiles {
         }
 
         float convertToMiles = feet / 5280;
+        DecimalFormat f = new DecimalFormat("##.00");
 
-        System.out.println(feet + "ft converted to miles is: " + convertToMiles + " mile/s");
+        System.out.println(feet + "ft converted to miles is: " + f.format(convertToMiles) + " mile/s");
 
     }
 }
