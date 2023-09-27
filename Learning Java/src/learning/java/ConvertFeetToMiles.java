@@ -6,20 +6,22 @@ public class ConvertFeetToMiles {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
 
-        int feet;
+        float feet;
         while (true){
             System.out.println("Enter number of feet you want to convert to miles:");
-            if (!in.hasNextInt()){
+            if (!in.hasNextFloat()){
                 System.out.println("Error: Enter a number");
-                in.next();
+                in.nextFloat();
             }
             else{
-                feet = in.nextInt();
+                feet = in.nextFloat();
                 break;
             }
         }
 
-        System.out.println(feet + "ft converted to miles is: " + feet/5280 + " mile/s");
+        float convertToMiles = feet / 5280;
+
+        System.out.println(feet + "ft converted to miles is: " + convertToMiles + " mile/s");
 
     }
 }
