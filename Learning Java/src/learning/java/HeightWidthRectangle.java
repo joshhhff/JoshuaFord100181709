@@ -8,7 +8,6 @@ public class HeightWidthRectangle {
 
         int width, length;  //Declaring width and length variables
 
-
         //Validating INTEGER data type
         while (true) {
             System.out.println("Enter width of rectangle:");
@@ -16,7 +15,7 @@ public class HeightWidthRectangle {
                 System.out.println("Error: Enter a whole number");
                 in.next();  //Discard last input and try again
             } else {
-                width = in.nextInt();
+                width = in.nextInt(); //Reads the integer from the user input and assigns to variable
                 break;
             }
         }
