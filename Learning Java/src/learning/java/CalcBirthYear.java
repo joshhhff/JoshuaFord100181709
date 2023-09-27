@@ -2,43 +2,27 @@ package learning.java;
 
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.Period;
+
 public class CalcBirthYear {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        int age, birthMonth;
-        while (true) {
-            System.out.println("Enter your age:");
-            if (!in.hasNextInt()) { //If the next input from the Scanner object "in" is not an integer
-                System.out.println("Error: Enter a number");
-                in.next();  //Discard last input and try again
-            } else {
-                age = in.nextInt();
-                break;
-            }
-        }
+        System.out.println("Enter your birth year: ");
+        int birthYear = in.nextInt();
+
+        System.out.println("Enter your birth month: ");
+        int birthMonth = in.nextInt();
+
+        System.out.println("Enter your birth day: ");
+        int birthDay = in.nextInt();
 
         LocalDate today = LocalDate.now();
-        int currentYear = today.getYear();
-        int currentMonth = today.getMonthValue();
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
 
-        int birthYear = currentYear - age;
+        Period period = Period.between(birthDate, today);
+        long ageInDays = period.getYears() * 365 + period.getMonths() * 30 + period.getDays();
 
-        // If the user's birthday hasn't occurred yet this year, subtract one from the birth year
-        while (true) {
-            System.out.println("Enter the number of your birth month:");
-            if (!in.hasNextInt()) { //If the next input from the Scanner object "in" is not an integer
-                System.out.println("Error: Enter a number");
-                in.next();  //Discard last input and try again
-            } else {
-                birthMonth = in.nextInt();
-                break;
-            }
-        }
-        if (birthMonth > currentMonth) {
-            birthYear--;
-        }
-
-        System.out.println("You were born in: " + birthYear);
+        System.out.println("You are " + ageInDays + " days old.");
     }
 }
