@@ -1,4 +1,4 @@
-package learning.java;
+package week1;
 
 import java.util.Scanner;
 import java.time.LocalDate;
