@@ -20,11 +20,9 @@ public class CalcInterest {
                 }
             }
 
-
         double interestRate = 0.01;
         double total = deposit + (deposit*interestRate);
 
         System.out.println("After interest (1% per year) your £" + deposit + " will increase to: £" + f.format(total));
     }
-
 }
