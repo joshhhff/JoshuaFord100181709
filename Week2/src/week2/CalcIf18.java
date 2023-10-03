@@ -68,6 +68,11 @@ public static void main(String[]args){
     Period period = Period.between(birthDate, today);
     long age = period.getYears();
 
-    System.out.println("You are " + age + " years old.");
+    if (age>=18){
+        System.out.println("You are 18 or over");
+    }
+    else{
+        System.out.println("You are under 18");
+    }
 }
 }
