@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JoshuaFord100181709.iml" filepath="$PROJECT_DIR$/JoshuaFord100181709.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week1/Learning Java.iml" filepath="$PROJECT_DIR$/Week1/Learning Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MusicPlayer/MusicPlayer.iml" filepath="$PROJECT_DIR$/MusicPlayer/MusicPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week2/Week2.iml" filepath="$PROJECT_DIR$/Week2/Week2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week3/Week3.iml" filepath="$PROJECT_DIR$/Week3/Week3.iml" />
     </modules>
