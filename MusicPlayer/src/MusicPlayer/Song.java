@@ -28,6 +28,6 @@ public class Song {
     }
 
     public String toString(){
-        return artistName + "-" + songName + "(Number of plays: " + playCount + ")";
+        return artistName + " | " + songName + " | " + "(Number of plays: " + playCount + ")";
     }
 }
