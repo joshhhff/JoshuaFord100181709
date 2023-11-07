@@ -84,14 +84,28 @@ public class Main {
                     System.out.println("Enter the song title: ");
                     String title = in.nextLine();
 
-                    System.out.println("Enter the play count: ");
-                    int plyCount = in.nextInt();
+                    boolean validPlyCountInput = false;
+                    int plyCount = 0;
+
+                    while (!validPlyCountInput) {
+                        System.out.println("Enter the play count: ");
+                        if (in.hasNextInt()) {
+                            plyCount = in.nextInt();
+                            validPlyCountInput = true;
+                        } else {
+                            System.out.println("Error: Enter a number");
+                            in.nextLine(); // Consume the invalid input
+                        }
+                    }
 
                     Song newSong = new Song(artist, title, plyCount);
                     musicPlayer.addSong(newSong);
                     break;
 
                 case 2:
+                    boolean validInput = false;
+                    int songIndex = 0;
+
                     if (musicPlayer.songs.isEmpty()) {
                         System.out.println("No songs to remove.");
                     } else {
@@ -99,8 +113,16 @@ public class Main {
                         for (int i = 0; i < musicPlayer.songs.size(); i++) {
                             System.out.println((i + 1) + ". " + musicPlayer.songs.get(i));
                         }
-                        int songIndex = in.nextInt();
-                        in.nextLine(); // Consume the newline character
+                        while (!validInput) {
+                            System.out.println("Enter the number of the song you want to remove: ");
+                            if (in.hasNextInt()) {
+                                songIndex = in.nextInt();
+                                validInput = true;
+                            } else {
+                                System.out.println("Error: Enter a number");
+                                in.nextLine(); // Consume the invalid input
+                            }
+                        }
 
                         if (songIndex >= 1 && songIndex <= musicPlayer.songs.size()) {
                             musicPlayer.removeSong(musicPlayer.songs.get(songIndex - 1));
