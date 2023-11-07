@@ -5,10 +5,10 @@ public class Song {
     private String artistName;
     private int playCount;
 
-    public Song(String artistName, String songName){
+    public Song(String artistName, String songName, int playCount){
         this.artistName = artistName;
         this.songName = songName;
-        this.playCount = 0;
+        this.playCount = playCount;
     }
 
     public String getArtistName(){

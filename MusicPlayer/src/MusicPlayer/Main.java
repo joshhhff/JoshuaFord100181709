@@ -33,6 +33,28 @@ public class Main {
         Main musicPlayer = new Main();
         Scanner in = new Scanner(System.in);
 
+        Song song1 = new Song("The Beatles", "Hey Jude", 5000000);
+        Song song2 = new Song("Queen", "Bohemian Rhapsody", 6000000);
+        Song song3 = new Song("Michael Jackson", "Thriller", 7000000);
+        Song song4 = new Song("Led Zeppelin", "Stairway to Heaven", 4500000);
+        Song song5 = new Song("Pink Floyd", "Comfortably Numb", 4000000);
+        Song song6 = new Song("Elton John", "Rocket Man", 3500000);
+        Song song7 = new Song("Bob Marley", "No Woman, No Cry", 3000000);
+        Song song8 = new Song("Adele", "Rolling in the Deep", 5500000);
+        Song song9 = new Song("U2", "With or Without You", 4800000);
+        Song song10 = new Song("Ed Sheeran", "Shape of You", 7000000);
+
+        musicPlayer.addSong(song1);
+        musicPlayer.addSong(song2);
+        musicPlayer.addSong(song3);
+        musicPlayer.addSong(song4);
+        musicPlayer.addSong(song5);
+        musicPlayer.addSong(song6);
+        musicPlayer.addSong(song7);
+        musicPlayer.addSong(song8);
+        musicPlayer.addSong(song9);
+        musicPlayer.addSong(song10);
+
         while (true) {
             System.out.println("\nMusic Player Menu:");
             System.out.println("1. Add a Song");
@@ -62,7 +84,10 @@ public class Main {
                     System.out.println("Enter the song title: ");
                     String title = in.nextLine();
 
-                    Song newSong = new Song(artist, title);
+                    System.out.println("Enter the play count: ");
+                    int plyCount = in.nextInt();
+
+                    Song newSong = new Song(artist, title, plyCount);
                     musicPlayer.addSong(newSong);
                     break;
 
