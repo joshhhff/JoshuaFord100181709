@@ -1,4 +1,4 @@
-package MusicPlayer; // Add this package declaration
+package MusicPlayer;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -33,6 +33,8 @@ public class Main {
         Main musicPlayer = new Main();
         Scanner in = new Scanner(System.in);
 
+        //Add 10 prefixed songs to playlist
+
         Song song1 = new Song("The Beatles", "Hey Jude", 5000000);
         Song song2 = new Song("Queen", "Bohemian Rhapsody", 6000000);
         Song song3 = new Song("Michael Jackson", "Thriller", 7000000);
@@ -55,6 +57,8 @@ public class Main {
         musicPlayer.addSong(song9);
         musicPlayer.addSong(song10);
 
+
+        //Print menu for user
         while (true) {
             System.out.println("\nMusic Player Menu:");
             System.out.println("1. Add a Song");
@@ -63,6 +67,8 @@ public class Main {
             System.out.println("4. Print Songs with More than a Certain Number of Plays");
             System.out.println("5. Exit");
 
+
+            //user input - also validates data type
             int choice;
             while (true) {
                 System.out.println("Select an option:");
@@ -75,60 +81,65 @@ public class Main {
                 }
             }
 
+            //different options for the user to select
             switch (choice) {
                 case 1:
                     in.nextLine();
                     System.out.println("Enter the artist's name: ");
-                    String artist = in.nextLine();
+                    String artistName = in.nextLine();
 
                     System.out.println("Enter the song title: ");
-                    String title = in.nextLine();
+                    String songName = in.nextLine();
 
-                    boolean validPlyCountInput = false;
                     int plyCount = 0;
 
-                    while (!validPlyCountInput) {
+                    while (true) {
                         System.out.println("Enter the play count: ");
-                        if (in.hasNextInt()) {
-                            plyCount = in.nextInt();
-                            validPlyCountInput = true;
-                        } else {
+                        if (!in.hasNextInt()) {
                             System.out.println("Error: Enter a number");
-                            in.nextLine(); // Consume the invalid input
+                            in.nextLine(); //consumes invalid input
+                        } else {
+                            plyCount = in.nextInt();
+                            break;
                         }
                     }
 
-                    Song newSong = new Song(artist, title, plyCount);
+                    //adds user provided data to array
+                    System.out.println(songName + " by " + artistName +  " Playcount: " + plyCount + " | has been added to the playlist.");
+                    Song newSong = new Song(artistName, songName, plyCount);
                     musicPlayer.addSong(newSong);
                     break;
 
                 case 2:
-                    boolean validInput = false;
-                    int songIndex = 0;
+                    while (true){
+                        int songIndex = 0;
 
-                    if (musicPlayer.songs.isEmpty()) {
-                        System.out.println("No songs to remove.");
-                    } else {
-                        System.out.println("Select a song to remove:");
-                        for (int i = 0; i < musicPlayer.songs.size(); i++) {
-                            System.out.println((i + 1) + ". " + musicPlayer.songs.get(i));
-                        }
-                        while (!validInput) {
-                            System.out.println("Enter the number of the song you want to remove: ");
-                            if (in.hasNextInt()) {
-                                songIndex = in.nextInt();
-                                validInput = true;
-                            } else {
-                                System.out.println("Error: Enter a number");
-                                in.nextLine(); // Consume the invalid input
-                            }
-                        }
-
-                        if (songIndex >= 1 && songIndex <= musicPlayer.songs.size()) {
-                            musicPlayer.removeSong(musicPlayer.songs.get(songIndex - 1));
-                            System.out.println("Song removed.");
+                        if (musicPlayer.songs.isEmpty()) {
+                            System.out.println("No songs to remove.");
                         } else {
-                            System.out.println("Invalid selection.");
+                            System.out.println("Select a song to remove:");
+                            for (int i = 0; i < musicPlayer.songs.size(); i++) {
+                                System.out.println((i + 1) + ". " + musicPlayer.songs.get(i));
+                            }
+                            while (true) {
+                                System.out.println("Enter the number of the song you want to remove: ");
+                                if (!in.hasNextInt()) {
+                                    System.out.println("Error: Enter a number");
+                                    in.nextLine(); //consumes invalid input
+                                    continue;
+                                } else {
+                                    songIndex = in.nextInt();
+                                    break;
+                                }
+                            }
+
+                            if (songIndex >= 1 && songIndex <= musicPlayer.songs.size()) {
+                                musicPlayer.removeSong(musicPlayer.songs.get(songIndex - 1));
+                                System.out.println("Song removed.");
+                                break;
+                            } else {
+                                System.out.println("Invalid selection.\n");
+                            }
                         }
                     }
                     break;
