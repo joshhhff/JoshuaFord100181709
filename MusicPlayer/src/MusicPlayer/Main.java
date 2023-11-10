@@ -23,6 +23,7 @@ public class Main {
 
     public void printSongsOverPlays(int playCount) {
         for (Song song : songs) {
+            //calculates the songs that have over the number of the playCount variable
             if (song.getPlayCount() > playCount) {
                 System.out.println(song);
             }
@@ -35,27 +36,25 @@ public class Main {
 
         //Add 10 prefixed songs to playlist
 
-        Song song1 = new Song("The Beatles", "Hey Jude", 5000000);
-        Song song2 = new Song("Queen", "Bohemian Rhapsody", 6000000);
-        Song song3 = new Song("Michael Jackson", "Thriller", 7000000);
-        Song song4 = new Song("Led Zeppelin", "Stairway to Heaven", 4500000);
-        Song song5 = new Song("Pink Floyd", "Comfortably Numb", 4000000);
-        Song song6 = new Song("Elton John", "Rocket Man", 3500000);
-        Song song7 = new Song("Bob Marley", "No Woman, No Cry", 3000000);
-        Song song8 = new Song("Adele", "Rolling in the Deep", 5500000);
-        Song song9 = new Song("U2", "With or Without You", 4800000);
-        Song song10 = new Song("Ed Sheeran", "Shape of You", 7000000);
+        String[][] songDetails = {
+                {"The Beatles", "Hey Jude", "5000000"},
+                {"Queen", "Bohemian Rhapsody", "6000000"},
+                {"Michael Jackson", "Thriller", "7000000"},
+                {"Led Zeppelin", "Stairway to Heaven", "4500000"},
+                {"Pink Floyd", "Comfortably Numb", "4000000"},
+                {"Elton John", "Rocket Man", "3500000"},
+                {"Bob Marley", "No Woman, No Cry", "3000000"},
+                {"Adele", "Rolling in the Deep", "5500000"},
+                {"U2", "With or Without You", "4800000"},
+                {"Ed Sheeran", "Shape of You", "7000000"}
+        };
 
-        musicPlayer.addSong(song1);
-        musicPlayer.addSong(song2);
-        musicPlayer.addSong(song3);
-        musicPlayer.addSong(song4);
-        musicPlayer.addSong(song5);
-        musicPlayer.addSong(song6);
-        musicPlayer.addSong(song7);
-        musicPlayer.addSong(song8);
-        musicPlayer.addSong(song9);
-        musicPlayer.addSong(song10);
+        //iterates through each value in the songDetails array and adds them to the playlist array
+
+        for (String[] details : songDetails) {
+            Song song = new Song(details[0], details[1], Integer.parseInt(details[2]));
+            musicPlayer.addSong(song);
+        }
 
 
         //Print menu for user
@@ -93,6 +92,7 @@ public class Main {
 
                     int plyCount = 0;
 
+                    //validates that the user input is a number
                     while (true) {
                         System.out.println("Enter the play count: ");
                         if (!in.hasNextInt()) {
@@ -105,24 +105,26 @@ public class Main {
                     }
 
                     //adds user provided data to array
-                    System.out.println(songName + " by " + artistName +  " Playcount: " + plyCount + " | has been added to the playlist.");
+                    System.out.println(songName + " by " + artistName +  " (Playcount: " + plyCount + ") has been added to the playlist.");
                     Song newSong = new Song(artistName, songName, plyCount);
                     musicPlayer.addSong(newSong);
                     break;
 
                 case 2:
+                    //loops the case in case user inputs invalid input so displays the menu again
                     while (true){
                         int songIndex = 0;
 
                         //this checks if the playlist is empty. If it is, it displays this to the user
                         if (musicPlayer.songs.isEmpty()) {
                             System.out.println("No songs to remove.");
-                        } else {
+                        } else {    //if there are songs in the playlist (this should be the case at the start of the program as I have added 10 songs when the program is first run)
                             in.nextLine();
                             System.out.println("Select a song to remove:");
                             for (int i = 0; i < musicPlayer.songs.size(); i++) {
                                 System.out.println((i + 1) + ". " + musicPlayer.songs.get(i));
                             }
+                            //checks if the user input is a number or not
                             while (true) {
                                 System.out.println("Enter the number of the song you want to remove: ");
                                 if (!in.hasNextInt()) {
@@ -134,6 +136,7 @@ public class Main {
                                 }
                             }
 
+                            //checks if the user input is a valid input. (The menu displays a number with the corresponding songs)
                             if (songIndex >= 1 && songIndex <= musicPlayer.songs.size()) {
                                 musicPlayer.removeSong(musicPlayer.songs.get(songIndex - 1));
                                 System.out.println("Song removed.");
@@ -146,14 +149,25 @@ public class Main {
                     break;
 
                 case 3:
+                    //displays all of the songs in the playlist
                     System.out.println("\nAll Songs:");
                     musicPlayer.printAllSongs();
                     break;
 
                 case 4:
-                    System.out.println("Enter the minimum play count: ");
-                    int playCount = in.nextInt();
-                    in.nextLine(); //consumes the newline character
+                    int playCount = 0;
+
+                    //validates that the user input is a number
+                    while (true) {
+                        in.nextLine();
+                        System.out.println("Enter the minimum play count: ");
+                        if (!in.hasNextInt()) {
+                            System.out.println("Error: Enter a number");
+                        } else {
+                            playCount = in.nextInt();
+                            break;
+                        }
+                    }
 
                     System.out.println("\nSongs with more than " + playCount + " play(s):");
                     musicPlayer.printSongsOverPlays(playCount);
