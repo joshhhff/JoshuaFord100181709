@@ -4,6 +4,16 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SongPlayer.java
+ *
+ * This file contains the playlist class
+ * Other Files: Song.java
+ *
+ * @author Joshua Ford
+ * Date: November 10, 2023
+ */
+
 public class Main {
     private final List<Song> songs = new ArrayList<>();
 

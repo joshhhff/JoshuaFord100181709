@@ -1,5 +1,15 @@
 package MusicPlayer;
 
+/**
+ * SongPlayer.java
+ *
+ * This file contains the playlist class
+ * Other Files: Main.java
+ *
+ * @author Joshua Ford
+ * Date: November 10, 2023
+ */
+
 public class Song {
     private String songName;
     private String artistName;
