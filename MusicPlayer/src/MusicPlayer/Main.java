@@ -117,6 +117,7 @@ public class Main {
                         if (musicPlayer.songs.isEmpty()) {
                             System.out.println("No songs to remove.");
                         } else {
+                            in.nextLine();
                             System.out.println("Select a song to remove:");
                             for (int i = 0; i < musicPlayer.songs.size(); i++) {
                                 System.out.println((i + 1) + ". " + musicPlayer.songs.get(i));
@@ -126,7 +127,6 @@ public class Main {
                                 if (!in.hasNextInt()) {
                                     System.out.println("Error: Enter a number");
                                     in.nextLine(); //consumes invalid input
-                                    continue;
                                 } else {
                                     songIndex = in.nextInt();
                                     break;
@@ -150,9 +150,9 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Enter the minimum play count: ");
+                    System.out.println("Enter the minimum play count: ");
                     int playCount = in.nextInt();
-                    in.nextLine(); // Consume the newline character
+                    in.nextLine(); //consumes the newline character
 
                     System.out.println("\nSongs with more than " + playCount + " play(s):");
                     musicPlayer.printSongsOverPlays(playCount);
