@@ -1,7 +1,7 @@
 package MusicPlayer;
 
 /**
- * SongPlayer.java
+ * Song.java
  *
  * This file contains the playlist class
  * Other Files: Main.java
