@@ -114,6 +114,7 @@ public class Main {
                     while (true){
                         int songIndex = 0;
 
+                        //this checks if the playlist is empty. If it is, it displays this to the user
                         if (musicPlayer.songs.isEmpty()) {
                             System.out.println("No songs to remove.");
                         } else {
